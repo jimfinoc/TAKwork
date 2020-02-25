@@ -104,8 +104,4 @@ print ("Sending to " + str(sending_Address_Port2) + " for the COT debugger")
 sent = datagramSocket.sendto(xml_re_encoded, sending_Address_Port3)
 print ("Sending to " + str(sending_Address_Port3) + " for WinTAK")
 
-
 datagramSocket.close()
-
-# print ("file")
-# print (file)
