@@ -8,8 +8,10 @@ import argparse
 parser = argparse.ArgumentParser()
 # parser.add_argument('--foo', help='foo help')
 parser.add_argument('-s', '--staleness', type=int, default=1, help='How long in minutes before an update to TAK goes into the stale state (and gets removed).')
-parser.add_argument('-u', '--event_uid', default="ROS_#", help='Unique identifier for the event.')
-parser.add_argument('-c', '--callsign', default="Baby baby", help='Call sign that displays on the map.')
+# parser.add_argument('-u', '--event_uid', default="ROS_#", help='Unique identifier for the event.')
+parser.add_argument('-cs', '--callsign', default="Baby baby", help='Call sign that displays on the map.')
+parser.add_argument('-c', '--color', default="soldier", help='color of object displaying on the map.')
+# parser.add_argument('-', '--color', default="soldier", help='color of object displaying on the map.')
 args = parser.parse_args()
 
 
@@ -35,7 +37,8 @@ evt_attr = {
     "version": "2.0",
     # "uid": "ROS"+serial,
     # "uid": "ROS"+"001",
-    "uid": args.event_uid,
+    # "uid": args.event_uid,
+    "uid": args.callsign,
     "time": zulu,
     "start": zulu,
     "stale": stale,
@@ -63,9 +66,12 @@ contact_attr = {
 }
 ET.SubElement(cot_detail, 'contact', attrib=contact_attr)
 
+# color = args.color
+
 group_attr = {
     # "name":"Cyan",
-    "name":"Yellow",
+    # "name":"Yellow",
+    "name":args.color
     # "role":"RTO"
     # "role":"Sniper"
     # "role":"Medic"
